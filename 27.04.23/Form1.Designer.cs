@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BestOil));
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -70,6 +72,11 @@
             this.labRezult = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.dateStatusStrip = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -77,6 +84,7 @@
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -204,6 +212,7 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "До сплати";
+            this.toolTip1.SetToolTip(this.groupBox2, "До сплати за пальне");
             // 
             // itogoAvto
             // 
@@ -213,6 +222,7 @@
             this.itogoAvto.Name = "itogoAvto";
             this.itogoAvto.Size = new System.Drawing.Size(114, 48);
             this.itogoAvto.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.itogoAvto, "До сплати за пальне");
             // 
             // label7
             // 
@@ -296,6 +306,7 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(56, 22);
             this.textBox10.TabIndex = 32;
+            this.textBox10.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // textBox9
             // 
@@ -303,6 +314,7 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(56, 22);
             this.textBox9.TabIndex = 31;
+            this.textBox9.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // textBox8
             // 
@@ -310,6 +322,7 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(56, 22);
             this.textBox8.TabIndex = 30;
+            this.textBox8.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // textBox7
             // 
@@ -317,6 +330,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(56, 22);
             this.textBox7.TabIndex = 29;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // textBox6
             // 
@@ -324,6 +338,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(56, 22);
             this.textBox6.TabIndex = 28;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // price_croissant
             // 
@@ -430,6 +445,7 @@
             this.groupBox4.TabIndex = 15;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "До сплати";
+            this.toolTip1.SetToolTip(this.groupBox4, "До сплати за міні-кафе");
             // 
             // itogoCafe
             // 
@@ -439,6 +455,7 @@
             this.itogoCafe.Name = "itogoCafe";
             this.itogoCafe.Size = new System.Drawing.Size(114, 48);
             this.itogoCafe.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.itogoCafe, "До сплати за міні-кафе");
             // 
             // label9
             // 
@@ -482,6 +499,7 @@
             this.buttonResult.Size = new System.Drawing.Size(117, 44);
             this.buttonResult.TabIndex = 16;
             this.buttonResult.Text = "Розрахувати";
+            this.toolTip1.SetToolTip(this.buttonResult, "Розрахувати загальну суму до сплати");
             this.buttonResult.UseVisualStyleBackColor = true;
             this.buttonResult.Click += new System.EventHandler(this.buttonResult_Click);
             // 
@@ -493,6 +511,7 @@
             this.labRezult.Name = "labRezult";
             this.labRezult.Size = new System.Drawing.Size(114, 48);
             this.labRezult.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.labRezult, "До сплати за пальне та міні-кафе");
             // 
             // label11
             // 
@@ -510,18 +529,57 @@
             this.pictureBox1.Location = new System.Drawing.Point(6, 32);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(97, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dateStatusStrip,
+            this.toolStripDropDownButton1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 492);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(464, 26);
+            this.statusStrip1.TabIndex = 17;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // dateStatusStrip
+            // 
+            this.dateStatusStrip.Name = "dateStatusStrip";
+            this.dateStatusStrip.Size = new System.Drawing.Size(166, 20);
+            this.dateStatusStrip.Text = "Текущие дата и время:";
+            this.dateStatusStrip.ToolTipText = "Текущие дата и время";
+            this.dateStatusStrip.DisplayStyleChanged += new System.EventHandler(this.timer1_Tick);
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(118, 24);
+            this.toolStripDropDownButton1.Text = "текущий день";
+            this.toolStripDropDownButton1.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
             // BestOil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 495);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.ClientSize = new System.Drawing.Size(464, 518);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "BestOil";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BestOil";
             this.Load += new System.EventHandler(this.BestOil_Load);
             this.groupBox1.ResumeLayout(false);
@@ -537,7 +595,10 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -585,6 +646,11 @@
         private System.Windows.Forms.Button buttonResult;
         private System.Windows.Forms.Label labRezult;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel dateStatusStrip;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
     }
 }
 
